@@ -30,13 +30,11 @@ public class AttachmentController {
     @Autowired
     private AttachmentService service;
 
-
     @ApiOperation(nickname = "attachment-post", value = "Insere um novo documento na aplicação")
     @PostMapping
     public ResponseEntity<AttachmentDTO> saveAttachement(AttachmentDTO attachmentDTO, HttpServletResponse response) {
 
         attachmentDTO = service.saveAttachement(attachmentDTO);
-        // publisher.publishEvent(new CreatedResourceEvent(this, response, attachmentDTO.getId()));
         return ResponseEntity.status(HttpStatus.CREATED).body(attachmentDTO);
     }
 
