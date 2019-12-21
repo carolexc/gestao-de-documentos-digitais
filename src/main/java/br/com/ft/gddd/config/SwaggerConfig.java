@@ -53,12 +53,10 @@ public class SwaggerConfig {
                 .globalResponseMessage(RequestMethod.PUT, Arrays.asList(m204put, m403, m404, m422, m500))
                 .globalResponseMessage(RequestMethod.DELETE, Arrays.asList(m204del, m403, m404, m500))
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("br.com.ft.gdp.controller"))
+                .apis(RequestHandlerSelectors.basePackage("br.com.ft.gddd.controller"))
                 .paths(PathSelectors.any())
                 .build()
                 .useDefaultResponseMessages(false)
-                .securitySchemes(Arrays.asList(new ApiKey("Token Access", HttpHeaders.AUTHORIZATION, In.HEADER.name())))
-                .securityContexts(Arrays.asList(securityContext()))
                 .apiInfo(apiInfo());
     }
 
@@ -67,20 +65,5 @@ public class SwaggerConfig {
                 "Este é o catálogo de serviços RESTFUL da " + nameOwner + ", para saber mais sobre acesse: ["
                         + nameOwner + "](" + ulrOwner + ").",
                 "STORE-REST", "#", null, "Licensa da API", "#", Collections.emptyList());
-    }
-
-    private SecurityContext securityContext() {
-        return SecurityContext.builder()
-                .securityReferences(defaultAuth())
-                .forPaths(PathSelectors.any())
-                .build();
-    }
-
-    List<SecurityReference> defaultAuth() {
-        AuthorizationScope authorizationScope = new AuthorizationScope("ADMIN", "accessEverything");
-        AuthorizationScope[] authorizationScopes = new AuthorizationScope[1];
-        authorizationScopes[0] = authorizationScope;
-        return Arrays.asList(
-                             new SecurityReference("Token Access", authorizationScopes));
     }
 }
