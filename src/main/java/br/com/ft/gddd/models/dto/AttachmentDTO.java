@@ -25,7 +25,5 @@ public class AttachmentDTO implements Serializable{
 	private String descrition;
 	
 	private String type;
-	
-	private byte[] document;
 
 }

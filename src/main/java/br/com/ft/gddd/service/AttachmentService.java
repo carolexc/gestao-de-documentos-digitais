@@ -1,11 +1,20 @@
 package br.com.ft.gddd.service;
 
-import org.bson.internal.Base64;
-import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
 
-import br.com.ft.gddd.models.domain.Attachment;
+import org.bson.types.ObjectId;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.gridfs.GridFsOperations;
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.mongodb.BasicDBObject;
+import com.mongodb.DBObject;
+
 import br.com.ft.gddd.models.dto.AttachmentDTO;
 import br.com.ft.gddd.repository.AttachmentRepository;
 
@@ -24,13 +33,26 @@ public class AttachmentService  implements GenericService<AttachmentDTO, Long>{
 	@Autowired
 	private AttachmentRepository repository;
 	
-	public AttachmentDTO saveAttachement(AttachmentDTO attachmentDTO) {
-		Attachment attachment = new Attachment();
-		BeanUtils.copyProperties(attachmentDTO, attachment, "id");
-		attachment.setDocument(Base64.encode(attachmentDTO.getDocument()));
-		attachment = repository.save(attachment);
-		BeanUtils.copyProperties(attachment, attachmentDTO);
+	@Autowired
+	private GridFsOperations gridFsOperations;
+	
+	public String saveAttachement(String id, MultipartFile document) throws Exception {
+
+		DBObject metadata = new BasicDBObject();
+		byte[] bytes = document.getBytes();
+
+        File tempFile=new File(document.getOriginalFilename());
+        BufferedOutputStream stream =
+                new BufferedOutputStream(new FileOutputStream(tempFile));
+        stream.write(bytes);
+        stream.close();
+
+		InputStream content = new FileInputStream(tempFile);
+
+		metadata.put("id", id);
+		ObjectId objId = gridFsOperations.store(content, metadata);
 		
-		return attachmentDTO;
+
+		return id;
 	}
 }
