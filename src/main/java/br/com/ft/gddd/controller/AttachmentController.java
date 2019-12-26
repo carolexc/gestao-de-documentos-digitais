@@ -1,10 +1,13 @@
 package br.com.ft.gddd.controller;
 
+import java.io.File;
+
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,6 +41,14 @@ public class AttachmentController {
 
         id = service.saveAttachement(id, file);
         return ResponseEntity.status(HttpStatus.CREATED).body(id);
+    }
+    
+    @ApiOperation(nickname = "attachment-get", value = "Insere um novo documento na aplicação")
+    @GetMapping("/{id}")
+    public ResponseEntity<File> getAttachement( @PathVariable("id") String id, HttpServletResponse response) throws Exception {
+
+        File file = service.getAttachement(id);
+        return ResponseEntity.status(HttpStatus.CREATED).body(file);
     }
 
 }
