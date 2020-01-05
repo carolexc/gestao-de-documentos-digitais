@@ -35,6 +35,7 @@ import br.com.ft.gddd.repository.AttachmentRepository;
 @Service
 public class AttachmentService implements GenericService<AttachmentDTO, Long> {
 
+	@SuppressWarnings("unused")
 	@Autowired
 	private AttachmentRepository repository;
 
@@ -71,8 +72,13 @@ public class AttachmentService implements GenericService<AttachmentDTO, Long> {
 
 		byte[] buffer = new byte[inputStream.available()];
 		inputStream.read(buffer);
-		OutputStream outStream = new FileOutputStream(file);
-		outStream.write(buffer);
+		OutputStream outStream = null;
+		try {
+			outStream = new FileOutputStream(file);
+			outStream.write(buffer);
+		}finally {
+			outStream.close();
+		}
 
 		return file; 
 	}
