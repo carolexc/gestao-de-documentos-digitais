@@ -1,4 +1,4 @@
-package br.com.ft.gddd.controller;
+package br.com.nivlabs.gddd.controller;
 
 import java.io.File;
 
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import br.com.ft.gddd.service.AttachmentService;
+import br.com.nivlabs.gddd.service.AttachmentService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 

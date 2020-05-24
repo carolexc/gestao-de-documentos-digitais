@@ -1,4 +1,4 @@
-package br.com.ft.gddd.models.domain;
+package br.com.nivlabs.gddd.models.domain;
 
 import java.io.Serializable;
 

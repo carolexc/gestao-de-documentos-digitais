@@ -1,9 +1,9 @@
-package br.com.ft.gddd.repository;
+package br.com.nivlabs.gddd.repository;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
-import br.com.ft.gddd.models.domain.Attachment;
+import br.com.nivlabs.gddd.models.domain.Attachment;
 
 /**
  * Classe AttachementRepository.java

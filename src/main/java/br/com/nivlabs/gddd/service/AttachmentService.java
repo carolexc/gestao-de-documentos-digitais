@@ -1,4 +1,4 @@
-package br.com.ft.gddd.service;
+package br.com.nivlabs.gddd.service;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -21,8 +21,7 @@ import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
 import com.mongodb.client.gridfs.model.GridFSFile;
 
-import br.com.ft.gddd.models.dto.AttachmentDTO;
-import br.com.ft.gddd.repository.AttachmentRepository;
+import br.com.nivlabs.gddd.repository.AttachmentRepository;
 
 /**
  * 
@@ -33,7 +32,7 @@ import br.com.ft.gddd.repository.AttachmentRepository;
  * @since 21 de dez de 2019
  */
 @Service
-public class AttachmentService implements GenericService<AttachmentDTO, Long> {
+public class AttachmentService{
 
 	@SuppressWarnings("unused")
 	@Autowired

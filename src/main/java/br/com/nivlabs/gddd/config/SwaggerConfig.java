@@ -1,4 +1,4 @@
-package br.com.ft.gddd.config;
+package br.com.nivlabs.gddd.config;
 
 import java.util.Arrays;
 import java.util.Collections;
