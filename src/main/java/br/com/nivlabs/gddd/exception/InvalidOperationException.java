@@ -1,4 +1,4 @@
-package br.com.ft.gddd.exception;
+package br.com.nivlabs.gddd.exception;
 
 public class InvalidOperationException extends RuntimeException {
 

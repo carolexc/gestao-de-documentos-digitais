@@ -1,4 +1,4 @@
-package br.com.ft.gddd.config;
+package br.com.nivlabs.gddd.config;
 
 import java.io.IOException;
 
