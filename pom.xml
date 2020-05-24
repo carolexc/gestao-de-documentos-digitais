@@ -11,12 +11,12 @@
 	</parent>
 	<groupId>br.com.ft</groupId>
 	<artifactId>gestao-de-documentos-digitais</artifactId>
-	<version>1.0.0</version>
+	<version>1.1.0</version>
 	<name>gestao-de-documentos-digitais</name>
 	<description>O FT - Gestão de Documentos Digitais - API (FTGDDD-API) é uma API Rest OpenSource criada para catalogar e gerenciar os diversos documentos digitais de um sistema.</description>
 
 	<properties>
-		<java.version>11</java.version>
+		<java.version>14</java.version>
 		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
 		<io.jwt.version>0.9.1</io.jwt.version>
 	</properties>
